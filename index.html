@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat kamu ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .crown {
+            font-size: 4rem;
+            color: #ffd700;
+            animation: sparkle 2s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        h1 {
+            color: #2d3748;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #718096;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+        
+        .appreciation-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            color: #2d3748;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .appreciation-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 4s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            font-size: 1.2rem;
+            animation: twinkle linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0% {
+                transform: translateY(-50px) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(50vh) rotate(180deg) scale(1);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        .button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.7rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .reveal {
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .quality-card {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            color: #2d3748;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: left;
+            position: relative;
+        }
+        
+        .quality-card h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: #2d3748;
+        }
+        
+        .quality-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .quality-list li {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            position: relative;
+            padding-left: 3rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .quality-list li:hover {
+            transform: translateX(5px);
+        }
+        
+        .quality-list li::before {
+            content: attr(data-icon);
+            position: absolute;
+            left: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .final-message {
+            background: linear-gradient(135deg, #c3a3ff 0%, #a8edea 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            color: #2d3748;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .final-message h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        @keyframes float-hearts {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="crown">👑</div>
+        <h1>DANIA</h1>
+        <p class="subtitle">Perempuan Paling Cantik Yang Pernah Aku Temui</p>
+        
+        <div class="appreciation-box">
+            <p>The most beautiful girl I've ever met</p>
+            <p>Satu satunya Perempuan yang jadi alasan aku bisa senyum tiap hari, energi yang kamu bawa ke aku sangat positif laa, lagi cape liat kamu pun hilang capee</p>
+            <p><strong>Kamu Benar Benar definisi dari kekuatan dan keanggunan yang sempurna!</strong></p>
+        </div>
+        
+        <div id="initialButtons">
+            <button class="button" onclick="showBeauty()">Tentang Kecantikannya 🌸</button>
+            <button class="button" onclick="showStrength()">Tentang Kekuatannya 💪</button>
+            <button class="button" onclick="showGreatness()">Tentang Kehebatannya 🌟</button>
+        </div>
+        
+        <div id="beauty" class="hidden">
+            <div class="quality-card reveal">
+                <h3>🌸 Tentang Kecantikan Kamu 🌸</h3>
+                <ul class="quality-list">
+                    <li data-icon="✨">Senyuman kamu Yang Selalunya Bisa Buat Orang Yang Liat Ikut Tersenyum</li>
+                    <li data-icon="🌺">Mata Kamu Yang cantik, Apalagi Brown eye Kamu Yakan</li>
+                    <li data-icon="🦋">Bulu Mata yang indah Jugaa hehe</li>
+                    <li data-icon="💫">Aura positif yang selalu terpancar dari dalam dirinya</li>
+                    <li data-icon="🌙">Kecantikan yang tidak hanya fisik, tapi juga dari hati yang mulia</li>
+                </ul>
+            </div>
+            <button class="button" onclick="showAll()">Lihat Semua Kualitas! 🎊</button>
+        </div>
+        
+        <div id="strength" class="hidden">
+            <div class="quality-card reveal">
+                <h3>💪 Tentang Kekuatan Kamu Yang Engga Semua Perempuan Miliki 💪</h3>
+                <ul class="quality-list">
+                    <li data-icon="🔥">Pantang menyerah dalam menghadapi setiap tantangan hidup</li>
+                    <li data-icon="🛡️">Mental yang kuat dan tidak mudah tergoyahkan</li>
+                    <li data-icon="⚡">Kemampuan bangkit dari keterpurukan dengan lebih kuat</li>
+                    <li data-icon="🌊">Ketenangan dalam menghadapi badai kehidupan</li>
+                    <li data-icon="🦅">Keberanian untuk mengejar mimpi setinggi langit, Dan Sebentar Lagi Akan Tercapai Yeayyy</li>
+                </ul>
+            </div>
+            <button class="button" onclick="showAll()">Lihat Semua Kualitas! 🎊</button>
+        </div>
+        
+        <div id="greatness" class="hidden">
+            <div class="quality-card reveal">
+                <h3>🌟 Kehebatan Kamu Yang Luar Biasa 🌟</h3>
+                <ul class="quality-list">
+                    <li data-icon="🎯">Perempuan paling pintar dimata aku</li>
+                    <li data-icon="💎">karakter Kamu Hebat dan keren kannnn</li>
+                    <li data-icon="🌈">Kemampuan membawa kebahagiaan bagi orang di sekitarnya</li>
+                    <li data-icon="🎨">Tiga Aja eee dah mulai ngantuk ini hehe, kalau di tulis satu satu ga tidur sampe pagii</li>
+                </ul>
+            </div>
+            <button class="button" onclick="showAll()">Lihat Semua Kualitas! 🎊</button>
+        </div>
+        
+        <div id="allQualities" class="hidden">
+            <div class="final-message reveal">
+                <h3>✨ Nah Ini Yang Terakhir ✨</h3>
+                <p> Aku bisa bilang kalau aku laki laki paling beruntung Karena Ada Kamu di hidup aku. Perempuan yang memadukan kecantikan, kekuatan, dan kehebatan dalam satu pribadi yang luar biasa.</p>
+                
+                <p>Perfect sangat kann kamu dimata aku, bahkan aku ga liat kekurangan yang ada di diri kamuu. Kuat namun lembut, cantik namun rendah hati, hebat namun tetap membumi. alay dikit gapapa ee</p>
+                
+                <p><strong>Semoga Di Birthday Kamu Nanti Aku bisa beri sesuatu yang lebih woahh hehe </strong></p>
+            
+            </div>
+            <button class="button" onclick="createCelebration()">Yang Ini Janji Yang Terakhir HEHE🎉</button>
+        </div>
+        
+        <div id="celebration" class="hidden">
+            <div class="final-message reveal">
+                <h3>🎊 LONG LIVE THE QUEEN! 🎊</h3>
+                <p>Terima kasih Kamu, karena sudah menjadi sosok yang begitu Berarti Di Hidup Aku </p>
+                <p>Terima kasih karena sudah menunjukkan kepada dunia bahwa keindahan sejati datang dari kombinasi kecantikan, kekuatan, dan kehebatan!</p>
+                <p><strong>You are absolutely AMAZING! 👑✨🌟</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sparkles = ['✨', '🌟', '💫', '⭐', '🌠', '💎', '👑', '🦋'];
+        
+        function createStarfall() {
+            const starContainer = document.getElementById('stars');
+            
+            setInterval(() => {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                starContainer.appendChild(star);
+                
+                setTimeout(() => {
+                    if (starContainer.contains(star)) {
+                        starContainer.removeChild(star);
+                    }
+                }, 7000);
+            }, 400);
+        }
+        
+        function hideAll() {
+            document.getElementById('beauty').classList.add('hidden');
+            document.getElementById('strength').classList.add('hidden');
+            document.getElementById('greatness').classList.add('hidden');
+            document.getElementById('allQualities').classList.add('hidden');
+            document.getElementById('celebration').classList.add('hidden');
+        }
+        
+        function showBeauty() {
+            hideAll();
+            document.getElementById('initialButtons').style.display = 'none';
+            document.getElementById('beauty').classList.remove('hidden');
+        }
+        
+        function showStrength() {
+            hideAll();
+            document.getElementById('initialButtons').style.display = 'none';
+            document.getElementById('strength').classList.remove('hidden');
+        }
+        
+        function showGreatness() {
+            hideAll();
+            document.getElementById('initialButtons').style.display = 'none';
+            document.getElementById('greatness').classList.remove('hidden');
+        }
+        
+        function showAll() {
+            hideAll();
+            document.getElementById('allQualities').classList.remove('hidden');
+        }
+        
+        function createCelebration() {
+            document.getElementById('allQualities').classList.add('hidden');
+            document.getElementById('celebration').classList.remove('hidden');
+            
+            // Create floating celebration elements
+            const celebrationElements = ['👑', '✨', '🌟', '💎', '🎊', '🎉', '🦋', '💫'];
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const element = document.createElement('div');
+                    element.innerHTML = celebrationElements[Math.floor(Math.random() * celebrationElements.length)];
+                    element.className = 'floating-hearts';
+                    element.style.left = Math.random() * window.innerWidth + 'px';
+                    element.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                    element.style.animation = 'float-hearts 4s ease-out forwards';
+                    
+                    document.body.appendChild(element);
+                    
+                    setTimeout(() => {
+                        if (document.body.contains(element)) {
+                            document.body.removeChild(element);
+                        }
+                    }, 4000);
+                }, i * 150);
+            }
+        }
+        
+        // Start the magical effects
+        createStarfall();
+        
+        // Add hover effects to buttons
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Add subtle animation to quality cards
+        document.querySelectorAll('.quality-list li').forEach((item, index) => {
+            item.style.animationDelay = (index * 0.1) + 's';
+        });
+    </script>
+</body>
+</html>
